@@ -24,6 +24,7 @@ import de.alpharogroup.wicket.behaviors.datetime.CurrentDatetimeBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModelBean;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
+import de.alpharogroup.wicket.components.sign.in.SignInWithRedirectionBean;
 
 public class HomePanel extends BasePanel<HomeModelBean>
 {
@@ -32,6 +33,8 @@ public class HomePanel extends BasePanel<HomeModelBean>
 	public HomePanel(final String id)
 	{
 		super(id);
+		add(ComponentFactory.newLabel("currentTimeLabel", Model.of("")).add(
+				new CurrentDatetimeBehavior()));
 		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModelBean
 			.builder()
 			.headerResourceKey(ResourceBundleKey.builder().key("home.header.label").build())
@@ -41,8 +44,8 @@ public class HomePanel extends BasePanel<HomeModelBean>
 		contentPanel.getContent().add(
 			new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
 		add(contentPanel);
-		add(ComponentFactory.newLabel("currentTimeLabel", Model.of("")).add(
-			new CurrentDatetimeBehavior()));
+		
+		add(new ApplicationSignInPanel("applicationSignInPanel", Model.of(SignInWithRedirectionBean.builder().build())));
 	}
 
 }
