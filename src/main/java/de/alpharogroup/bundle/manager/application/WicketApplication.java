@@ -195,6 +195,7 @@ public class WicketApplication extends DisableJSessionIDinUrlApplication
 		super.onGlobalSettings();
 		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(),
 			FOOTER_FILTER_NAME, "UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
+		
 	}
 
 }

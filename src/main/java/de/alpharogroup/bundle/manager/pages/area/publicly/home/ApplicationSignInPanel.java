@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.bundle.manager.pages.area.app.DashboardPage;
 import de.alpharogroup.wicket.components.sign.in.SignInWithRedirectionBean;
 import de.alpharogroup.wicket.components.sign.in.form.SigninFormPanel;
 
@@ -52,8 +53,9 @@ public class ApplicationSignInPanel extends GenericPanel<SignInWithRedirectionBe
 	}
 
 	protected void onSignin(AjaxRequestTarget target, Form<?> form) {
-		// TODO Auto-generated method stub
-		
+		// TODO signin process
+		SignInWithRedirectionBean signInWithRedirectionBean = getModelObject();
+		setResponsePage(DashboardPage.class);		
 	}
 
 	protected void onError(AjaxRequestTarget target, Form<?> form) {

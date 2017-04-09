@@ -27,13 +27,14 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	
+
 	<properties>
 		<!-- JAULP-WICKET version -->
 		<jaulp.wicket.version>6.25.0</jaulp.wicket.version>
 		<!-- JAULP-WICKET version -->
 		<jaulp.wicket.version>6.25.0</jaulp.wicket.version>
 		<authorization.strategy.api.version>6.25.0</authorization.strategy.api.version>
+		<httpclient.version>4.5.3</httpclient.version>
 	</properties>
 
 	<dependencyManagement>
@@ -86,6 +87,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
 				<version>${jaulp.wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -150,6 +157,11 @@
 			<artifactId>wicket-session-timeout</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
 	</dependencies>
-	
+
 </project>
