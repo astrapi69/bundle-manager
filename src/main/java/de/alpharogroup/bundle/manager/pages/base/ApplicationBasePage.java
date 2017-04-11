@@ -21,6 +21,7 @@ import java.util.List;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -36,6 +37,7 @@ import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.alpharogroup.bundle.manager.application.WicketApplication;
 import de.alpharogroup.bundle.manager.application.WicketSession;
+import de.alpharogroup.bundle.manager.res.ref.PureCssResourceReference;
 import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
@@ -66,7 +68,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The Constant COPYRIGHT_URL. */
-	protected static final String COPYRIGHT_URL = "TODO-set-copyright-url.com";
+	protected static final String COPYRIGHT_URL = "http://www.alpharogroup.de/";
 
 	/** The Constant NAVBAR_PANEL_ID. */
 	protected static final String NAVBAR_PANEL_ID = "navbar";
@@ -316,26 +318,16 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		final List<LinkItem> linkModel = new ArrayList<>();
 		linkModel.add(LinkItem
 			.builder()
-			.url("http://www.alpharogroup.de/")
+			.url(COPYRIGHT_URL)
 			.target(DefaultTargets.BLANK.getTarget())
 			.linkClass(ExternalLink.class)
 			// open in a new tab or window...
 			.resourceModelKey(
 				ResourceBundleKey.builder().key("main.footer.copyright.label")
-					.defaultValue("\u0040 copyright {year} Design by {company}").build())
+					.defaultValue("\u0040 copyright {year} Design by {company}")
+					
+					.build())
 			.build());
-//		linkModel.add(LinkItem
-//			.builder()
-//			.pageClass(ImprintPage.class)
-//			.resourceModelKey(
-//				ResourceBundleKey.builder().key("main.global.menu.masthead.label")
-//					.defaultValue("Imprint").build()).build());
-//		linkModel.add(LinkItem
-//			.builder()
-//			.pageClass(TermOfUsePage.class)
-//			.resourceModelKey(
-//				ResourceBundleKey.builder().key("main.global.menu.term.of.use.label")
-//					.defaultValue("AGBs").build()).build());
 		final IModel<List<LinkItem>> listModel = new ListModel<>(linkModel);
 		return listModel;
 	}
@@ -368,7 +360,8 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		HeaderResponseExtensions.renderHeaderResponse(response, ApplicationBasePage.class);
+		response.render(CssHeaderItem.forReference(PureCssResourceReference.get()));
+		HeaderResponseExtensions.renderHeaderResponse(response, ApplicationBasePage.class);		
 	}
 
 }

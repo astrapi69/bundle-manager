@@ -1,5 +1,6 @@
-package de.alpharogroup.bundle.manager.pages.area.publicly.home;
+package de.alpharogroup.bundle.manager.pages.area.publicly.signin;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
@@ -40,6 +41,12 @@ public class ApplicationSignInPanel extends GenericPanel<SignInWithRedirectionBe
 					@Override
 					protected void onError(AjaxRequestTarget target, Form<?> form) {
 						ApplicationSignInPanel.this.onError(target, form);
+					}
+					
+					@Override
+					protected void onBeforeRender() {
+						getForm().add(AttributeModifier.append("class", "pure-form pure-form-aligned"));
+						super.onBeforeRender();
 					}
 			
 		};

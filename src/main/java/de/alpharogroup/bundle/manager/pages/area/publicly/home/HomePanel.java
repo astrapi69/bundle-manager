@@ -17,6 +17,7 @@ package de.alpharogroup.bundle.manager.pages.area.publicly.home;
 
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.bundle.manager.pages.area.publicly.signin.ApplicationSignInPanel;
 import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
